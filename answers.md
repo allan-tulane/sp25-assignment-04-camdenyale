@@ -10,7 +10,7 @@
 
 - **1a.**
 
-$\log_d n$
+  $\log_d n$
 
 - **1b.**
   
@@ -29,19 +29,88 @@ $\log_d n$
 
   d = |E| / |V|  
 
-- **2a.**
+- **2a.**   
+  APSP(i, j, 0):
+  
+    APSP(0,0,0) = 0
+  
+    APSP(0,1,0) = -2
+  
+    APSP(0,2,0) = 2
+  
+    APSP(1,0,0) = $\infty$
+  
+    APSP(1,1,0) = 0
+  
+    APSP(1,2,0) = 0
+  
+    APSP(2,0,0) = 0
+  
+    APSP(2,1,0) = 0
+  
+    APSP(2,2,0) = 0
+
+  APSP(i, j, 1):
+  
+    APSP(0,0,1) = 0
+  
+    APSP(0,1,1) = -2
+  
+    APSP(0,2,1) = -1
+  
+    APSP(1,0,1) = $\infty$
+  
+    APSP(1,1,1) = 0
+  
+    APSP(1,2,1) = 1
+  
+    APSP(2,0,1) = $\infty$
+  
+    APSP(2,1,1) = $\infty$
+  
+    APSP(2,2,1) = 0
+
+  APSP(i, j, 2):
+  
+    APSP(0,0,2) = 0
+  
+    APSP(0,1,2) = -2
+  
+    APSP(0,2,2) = -1
+  
+    APSP(1,0,2) = $\infty$
+  
+    APSP(1,1,2) = 0
+  
+    APSP(1,2,2) = 1
+  
+    APSP(2,0,2) = $\infty$
+  
+    APSP(2,1,2) = $\infty$
+  
+    APSP(2,2,2) = 0
 
 
 - **2b.**
 
+  APSP(i, j, 2) = min(APSP(i, j, 1), APSP(i, 2, 1) + APSP(2, j, 1))
+
 
 - **2c.**
 
+  Shortest path from i to j would be either the best path without using k, or the path going through k.
+  
+  Therefore, APSP(i, j, k) = min(APSP(i, j, k - 1), APSP(i, k, k - 1) + APSP(k, j, k - 1))
+
 - **2d.**
+
+  The number of distinct subproblems is n * n * n = $n^3$.
+
+  Therefore, the work is O($n^3$)
 
 - **2e.**
 
-
+  Our algorithm is preferable when the graphs are smaller and more dense. 
 
 - **3a.**
 
